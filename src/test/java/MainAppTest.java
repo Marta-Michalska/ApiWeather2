@@ -15,7 +15,7 @@ public class MainAppTest {
     @Test
     @DisplayName("Główny test połączenia")
     @Tag("dev")
-    void connectionTest() {
+    public void connectionTest() {
         HttpService httpService = new HttpService();
         JSONObject rootObject = null;
         try {
@@ -28,21 +28,21 @@ public class MainAppTest {
     }
     @Test
     @DisplayName("Test pogody dla miasta Warszawa")
-    void connectByCityNameTest() {
+    public void connectByCityNameTest() {
         MainApp mainApp = new MainApp();
-        String responseTest = mainApp.connectByCityName("Warsaw");
+        String responseTest = mainApp.connectByCityName("Warszawa");
         JSONObject jsonObject = new JSONObject(responseTest);
         Assertions.assertEquals(200, jsonObject.getInt("cod"));
         Assertions.assertEquals("Warsaw", jsonObject.getString("name"));
     }
     @Test
     @Disabled("Test pogody dla kodu 62-510")
-    void connectByZipCodeNameTest() {
+    public void connectByZipCodeNameTest() {
         MainApp mainApp = new MainApp();
         String responseTest = mainApp.connectByZipCode("62-510");
         JSONObject jsonObject = new JSONObject(responseTest);
         Assertions.assertEquals(200, jsonObject.getInt("cod"));
-        Assertions.assertEquals("Warsaw", jsonObject.getString("name"));
+        Assertions.assertEquals("Konin", jsonObject.getString("name"));
     }
     @AfterAll
     static void done() {
