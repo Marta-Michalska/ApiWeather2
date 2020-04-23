@@ -1,17 +1,15 @@
 import org.json.JSONObject;
-import org.junit.Assert;
-import org.junit.Test;
 
 import java.io.IOException;
-
-import org.json.JSONObject;
 import org.junit.jupiter.api.*;
-import java.io.IOException;
+
 public class MainAppTest {
+
     @BeforeAll
     static void init() {
         System.out.println("Rozpoczęcie testów aplikacji");
     }
+
     @Test
     @DisplayName("Główny test połączenia")
     @Tag("dev")
@@ -36,7 +34,7 @@ public class MainAppTest {
         Assertions.assertEquals("Warsaw", jsonObject.getString("name"));
     }
     @Test
-    @Disabled("Test pogody dla kodu 62-510")
+    @DisplayName("Test pogody dla kodu 62-510")
     public void connectByZipCodeNameTest() {
         MainApp mainApp = new MainApp();
         String responseTest = mainApp.connectByZipCode("62-510");
